@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HKcwxJOJQ0fPbPvutZKupclvoL2AixD4haOLur0XPRk=",
+  "Hash": "7WfNiiDLOMc6oI82lYVgG0uEgMh8ZkDDbX++PU9uxLg=",
   "Source": "Client",
   "BasePath": "_content/Client",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\books.js"
+    },
+    {
+      "Identity": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\employees.js",
+      "SourceId": "Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\",
+      "BasePath": "_content/Client",
+      "RelativePath": "js/employees.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\employees.js"
     },
     {
       "Identity": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\site.js",

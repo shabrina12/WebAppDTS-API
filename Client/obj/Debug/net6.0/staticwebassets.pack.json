@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\js\\books.js"
     },
     {
+      "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\employees.js",
+      "PackagePath": "staticwebassets\\js\\employees.js"
+    },
+    {
       "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
