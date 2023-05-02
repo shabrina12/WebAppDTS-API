@@ -1,0 +1,75 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    padding-top: 80px;
+    height: 120vh;
+}
+
+.one, .two > div {
+    padding: 2em 3em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 16px;
+    text-align: justify;
+}
+/*.one {
+    color: white;
+}*/
+.two {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+    .two > div:first-child {
+        background-color: #87CBB9;
+        border-radius: 0 16px 0 0;
+    }
+
+    .two > div:last-child {
+        background-color: #B9EDDD;
+        border-radius: 0 0 16px 0;
+    }
+
+.grid button {
+    padding: 0.5em 2em;
+    background-color: #E86A33;
+    color: white;
+    border: none;
+    border-radius: 16px;
+}
+
+#btn-2 a {
+    text-decoration: none;
+    color: white;
+}
+
+.grid button:hover {
+    scale: 1.1;
+    background-color: #e34d0b;
+}
+
+.price, .hideBtn {
+    display: none;
+}
+
+.show {
+    display: block;
+}

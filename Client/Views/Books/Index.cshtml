@@ -1,0 +1,116 @@
+﻿<div class="form-group mb-5">
+    @*    <label for="livesearchtags">Find your book</label>*@
+    <h2 class="d-flex align-items-center">
+        Find your book
+        <img src="https://img.freepik.com/premium-vector/pastel-book-icon-education-concept_77417-1738.jpg?w=2000" width="50" height="50" alt="book" />
+    </h2>
+    <input class="form-control mt-3" id="livesearchtags" placeholder="Search book title">
+</div>
+
+<div class="content-container">
+    <div class="category-container">
+        <button id="fiction" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/2178/2178098.png" width="20" height="20" alt='fiction' />
+            Fiction
+        </button>
+        <button id="self-help" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/3062/3062389.png" width="20" height="20" alt='fiction' />
+            Self Help
+        </button>
+        <button id="biography" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/3079/3079111.png" width="20" height="20" alt='fiction' />
+            Biography
+        </button>
+        <button id="music" type="button">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-music-1128-1131524.png" width="20" height="20" alt='fiction' />
+            Music
+        </button>
+        <button id="architecture" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/128/899/899154.png" width="20" height="20" alt='fiction' />
+            Architecture
+        </button>
+        <button id="business" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/2201/2201560.png" width="20" height="20" alt='fiction' />
+            Business & Economics
+        </button>
+        <button id="literature-history" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/2387/2387613.png" width="20" height="20" alt='fiction' />
+            Literature and history
+        </button>
+        <button id="detective" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995616.png" width="20" height="20" alt='fiction' />
+            Detective & mystery
+        </button>
+        <button id="family" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/374/374971.png" width="20" height="20" alt='fiction' />
+            Family & Relationships
+        </button>
+        <button id="comics" type="button">
+            <img src="https://cdn-icons-png.flaticon.com/512/3938/3938619.png" width="20" height="20" alt='fiction' />
+            Comics & Graphic Novels
+        </button>
+        @*<button id="philosophy" type="button">Philosophye</button>*@
+    </div>
+
+    <div class="table-container">
+        <table class="table table-striped table-hover">
+            <thead class="table-head">
+                <tr>
+                    <th scope="col" class="col-1">No</th>
+                    <th scope="col" class="col-2">Preview</th>
+                    <th scope="col" class="col-2">Title</th>
+                    <th scope="col" class="col-2">Author(s)</th>
+                    <th scope="col" class="col-2">Published</th>
+                    <th scope="col" class="col-1">Details</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyPoke">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalSW" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Book Information</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                @*  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>*@
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <img src="" id="imgBook" width="250" height="350" />
+                </div>
+                <div class="text-container">
+                    <div class="title-author">
+                        <h4 class="book-title"></h4>
+                        <p class="book-author"></p>
+                    </div>
+                    <div class="rating line-top">
+                        <p class="avg-rating"></p>
+                    </div>
+                    <div class="book-desc-container pt-3 line">
+                        <h6 class="text-decoration-underline">BOOK DESCRIPTION</h6>
+                        <p class="book-desc"></p>
+                    </div>
+                    <div class="book-pub line-bottom pt-3 pb-3">
+                        <p class="publisher"></p>
+                        <h6 class="published-date"></h6>
+                    </div>
+                    <h6 class="genre pt-3 pb-3"></h6>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal -->
+@section Scripts{
+    <script src="~/js/books.js"></script>
+}
