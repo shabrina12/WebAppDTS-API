@@ -10,5 +10,9 @@ namespace Client.Controllers
         {
             return View();
         }
+        public IActionResult Master()
+        {
+            return View();
+        }
     }
 }

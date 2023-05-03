@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7WfNiiDLOMc6oI82lYVgG0uEgMh8ZkDDbX++PU9uxLg=",
+  "Hash": "bigyCNZxL3IQjvEoHhkScmy4G3+Y9GakNMckj69nkOs=",
   "Source": "Client",
   "BasePath": "_content/Client",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\books.css"
+    },
+    {
+      "Identity": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\css\\employees.css",
+      "SourceId": "Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\",
+      "BasePath": "_content/Client",
+      "RelativePath": "css/employees.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\employees.css"
     },
     {
       "Identity": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\css\\site.css",

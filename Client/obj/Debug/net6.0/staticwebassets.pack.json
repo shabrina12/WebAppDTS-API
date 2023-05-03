@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\books.css"
     },
     {
+      "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\css\\employees.css",
+      "PackagePath": "staticwebassets\\css\\employees.css"
+    },
+    {
       "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

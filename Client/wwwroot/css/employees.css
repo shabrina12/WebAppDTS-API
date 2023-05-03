@@ -1,0 +1,11 @@
+.back-icon {
+    margin-bottom: 1rem;
+    padding: 10px 12px;
+    background: lightblue;
+    border-radius: 8px;
+}
+#MyPopup .modal-body {
+    overflow-y: auto;
+    width: 100%;
+    max-height: calc(100vh - 200px);
+}

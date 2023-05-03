@@ -1,0 +1,29 @@
+﻿
+<a class="text-dark text-decoration-none d-flex gap-1 align-items-center" asp-area="" asp-controller="Employees" asp-action="Index">
+    <i class="back-icon fa-solid fa-arrow-left"></i>
+</a>
+
+<table class="table table-striped table-hover">
+    <thead class="table-head">
+        <tr>
+            <th scope="col" class="col-1">NIK</th>
+            <th scope="col" class="col-1">First Name</th>
+            <th scope="col" class="col-1">Last Name</th>
+            <th scope="col" class="col-1">Gender</th>
+            <th scope="col" class="col-2">Birth Date</th>
+            <th scope="col" class="col-1">Email</th>
+            <th scope="col" class="col-2">Phone Number</th>
+            <th scope="col" class="col-2">Hiring Date</th>
+            <th scope="col" class="col-1">Major</th>
+            <th scope="col" class="col-1">Degree</th>
+            <th scope="col" class="col-1">University</th>
+            @*<th scope="col" class="col-1">Action</th>*@
+        </tr>
+    </thead>
+    <tbody id="tbodyMaster">
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/js/employees.js"></script>
+}

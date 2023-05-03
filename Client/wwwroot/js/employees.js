@@ -1,4 +1,40 @@
-﻿let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+﻿//$(function () {
+//    $("body").on('click', '#btnEdit', function () {
+//        $("#MyPopup").modal("hide");
+//        var obj = {};
+//        obj.Id = $(this).attr('data-id');
+
+//        $.ajax({
+//            url: 'Home/EditCustomer',
+//            data: JSON.stringify(obj),
+//            type: 'POST',
+//            dataType: 'html',
+//            contentType: "application/json; charset=utf-8",
+//            success: function (response) {
+//                $("#dvPartial").html(response);
+//                $("#MyPopup").modal("show");
+//            }
+//        });
+//    });
+
+//    $("body").on('click', '#btnAdd', function () {
+//        $("#MyPopup").modal("hide");
+//        $.ajax({
+//            url: 'Home/AddCustomer',
+//            data: {},
+//            type: 'POST',
+//            dataType: 'html',
+//            contentType: "application/json; charset=utf-8",
+//            success: function (response) {
+//                $("#dvPartial").html(response);
+//                $("#MyPopup").modal("show");
+//            }
+//        });
+//    });
+//});
+
+
+let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 //function GetEmployees() {
     $.ajax({
@@ -30,6 +66,7 @@
                          <td>${val.email}</td>
                          <td>${val.phoneNumber}</td>                         
                          <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td>   
+                         <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit</button></td>
                         </tr>`;
                 } else if (val.gender == 0) {
                     temp += `<tr>
@@ -41,6 +78,7 @@
                          <td>${val.email}</td>
                          <td>${val.phoneNumber}</td>                         
                          <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td>  
+                         <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit</button></td>
                         </tr>`;
                 }
             });
@@ -48,6 +86,65 @@
         }
     });
 //}
+
+//function GetEmployeesMaster() {
+$.ajax({
+    type: "GET",
+    url: "https://localhost:7125/api/employee/master",
+    datatype: "json",
+    success: function (data) {
+        //console.log(data);
+        let temp = "";
+        $.each(data.message, (key, val) => {
+            //console.log(val.nik);
+            //console.log(val.major);
+            //console.log(val.universityName);
+            let birthdate = new Date(val.birthDate);
+            let birthDay = birthdate.getDate();
+            let birthMonth = birthdate.getMonth();
+            let birthYear = birthdate.getFullYear();
+
+            let hiringdate = new Date(val.hiringDate);
+            let hiringDay = hiringdate.getDate();
+            let hiringMonth = hiringdate.getMonth();
+            let hiringYear = hiringdate.getFullYear();
+
+            if (val.gender == 1) {
+                temp += `<tr>
+                         <td>${val.nik}</td>      
+                         <td>${val.firstName}</th>
+                         <td>${val.lastName}</td>
+                         <td>Female</td>
+                         <td>${birthDay} ${monthNames[birthMonth]} ${birthYear}</td>     
+                         <td>${val.email}</td>
+                         <td>${val.phoneNumber}</td>                         
+                         <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td>
+                         <td>${val.major}</td>
+                         <td>${val.degree}</td>      
+                         <td>${val.universityName}</td>       
+                        </tr>`;
+            } else if (val.gender == 0) {
+                temp += `<tr>
+                         <td>${val.nik}</td>      
+                         <td>${val.firstName}</th>
+                         <td>${val.lastName}</td>
+                         <td>Male</td>
+                         <td>${birthDay} ${monthNames[birthMonth]} ${birthYear}</td>      
+                         <td>${val.email}</td>
+                         <td>${val.phoneNumber}</td>                         
+                         <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td>   
+                         <td>${val.major}</td>
+                         <td>${val.degree}</td>      
+                         <td>${val.universityName}</td> 
+                        </tr>`;
+            }
+        });
+        $("#tbodyMaster").html(temp);
+    }
+});
+//}
+
+//onclick="detailEmployee('${val}')"
 
 //function detailBook(stringUrl) {
 //    $.ajax({
