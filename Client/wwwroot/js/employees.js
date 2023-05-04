@@ -1,37 +1,65 @@
-﻿//$(function () {
-//    $("body").on('click', '#btnEdit', function () {
-//        $("#MyPopup").modal("hide");
-//        var obj = {};
-//        obj.Id = $(this).attr('data-id');
-
-//        $.ajax({
-//            url: 'Home/EditCustomer',
-//            data: JSON.stringify(obj),
-//            type: 'POST',
-//            dataType: 'html',
-//            contentType: "application/json; charset=utf-8",
-//            success: function (response) {
-//                $("#dvPartial").html(response);
-//                $("#MyPopup").modal("show");
-//            }
-//        });
-//    });
-
-//    $("body").on('click', '#btnAdd', function () {
-//        $("#MyPopup").modal("hide");
-//        $.ajax({
-//            url: 'Home/AddCustomer',
-//            data: {},
-//            type: 'POST',
-//            dataType: 'html',
-//            contentType: "application/json; charset=utf-8",
-//            success: function (response) {
-//                $("#dvPartial").html(response);
-//                $("#MyPopup").modal("show");
-//            }
-//        });
-//    });
+﻿//document.querySelector("#submit-btn").addEventListener('click', function () {
+//    Register();
 //});
+
+//https://stackoverflow.com/questions/53694736/how-to-use-ajax-for-submitting-data-from-bootstrap-modal-in-asp-net
+//function Register() {
+//    $.ajax({
+//        type: "POST",
+//        url: "https://localhost:7125/api/account/register",
+//        data: {},
+//        datatype: "json",
+//        success: function (data) {
+//            console.log(data);
+//        },
+//        error: function (ex) {
+//            alert('Failed to retrieve data : ' + ex);
+//        }
+//    });
+//}
+
+function TesSubmit() {
+    alert("submit berhasil");
+}
+
+function Insert() {
+    var obj = new Object(); //sesuaikan sendiri nama objectnya dan beserta isinya
+    //ini ngambil value dari tiap inputan di form nya
+    obj.Nik = $("#Nik").val();
+    obj.firstName = $("#firstName").val();
+    obj.lastName = $("#lastName").val();
+  /*  obj.gender = $("#Gender").val();*/
+    obj.birthDate = $("#birthDate").val();
+    obj.major = $("#Major").val();
+    obj.Gpa = $("#Gpa").val();
+    obj.degree = $("#Degree").val();
+    obj.universityName = $("#University").val();
+    obj.email = $("#email").val();
+    obj.password = $("#password").val();
+    obj.phoneNumber = $("#phoneNumber").val();
+    //isi dari object kalian buat sesuai dengan bentuk object yang akan di post
+    $.ajax({
+        url: "https://localhost:7125/employee",
+        type: "POST",
+        //data: JSON.stringify(obj),
+        data: obj,//jika terkena 415 unsupported media type (tambahkan headertype Json & JSON.Stringify();)
+        dataType: "json",
+        success: function (data) {
+            alert("insert data success");
+        },
+        error: function (){
+           /* alert('Failed to retrieve data : ' + er);*/
+            alert('failer to retrieve data: ' + JSON.stringify(data));
+        }
+    })
+    //    .done((result) => {
+    //   //buat alert pemberitahuan jika success
+    //    alert("insert data success");
+    //}).fail((error) => {
+    //    //alert pemberitahuan jika gagal
+    //    alert("insert data failed" + error);
+    //})
+}
 
 
 let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -65,8 +93,7 @@ let monthNames = ["January", "February", "March", "April", "May", "June", "July"
                          <td>${birthDay} ${monthNames[birthMonth]} ${birthYear}</td>     
                          <td>${val.email}</td>
                          <td>${val.phoneNumber}</td>                         
-                         <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td>   
-                         <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit</button></td>
+                         <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td> 
                         </tr>`;
                 } else if (val.gender == 0) {
                     temp += `<tr>
@@ -78,7 +105,6 @@ let monthNames = ["January", "February", "March", "April", "May", "June", "July"
                          <td>${val.email}</td>
                          <td>${val.phoneNumber}</td>                         
                          <td>${hiringDay} ${monthNames[hiringMonth]} ${hiringYear}</td>  
-                         <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit</button></td>
                         </tr>`;
                 }
             });
@@ -86,6 +112,8 @@ let monthNames = ["January", "February", "March", "April", "May", "June", "July"
         }
     });
 //}
+
+//<td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit</button></td>
 
 //function GetEmployeesMaster() {
 $.ajax({
@@ -96,9 +124,6 @@ $.ajax({
         //console.log(data);
         let temp = "";
         $.each(data.message, (key, val) => {
-            //console.log(val.nik);
-            //console.log(val.major);
-            //console.log(val.universityName);
             let birthdate = new Date(val.birthDate);
             let birthDay = birthdate.getDate();
             let birthMonth = birthdate.getMonth();

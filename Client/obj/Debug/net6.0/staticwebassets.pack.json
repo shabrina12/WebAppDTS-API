@@ -37,8 +37,16 @@
       "PackagePath": "staticwebassets\\js\\employees.js"
     },
     {
+      "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\roles.js",
+      "PackagePath": "staticwebassets\\js\\roles.js"
+    },
+    {
       "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\university.js",
+      "PackagePath": "staticwebassets\\js\\university.js"
     },
     {
       "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\lib\\bootstrap\\LICENSE",

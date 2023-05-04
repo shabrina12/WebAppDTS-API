@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Client",
+    "\\Client\\wwwroot",
+    "\\Client\\wwwroot\\js",
     "\\WebAppDTS-API",
     "\\WebAppDTS-API\\Base",
     "\\WebAppDTS-API\\Controllers",
@@ -8,6 +11,6 @@
     "\\WebAppDTS-API\\Repository",
     "\\WebAppDTS-API\\Repository\\Contracts"
   ],
-  "SelectedNode": "\\WebAppDTS-API.sln",
+  "SelectedNode": "\\Client\\wwwroot\\js\\university.js",
   "PreviewInSolutionExplorer": false
 }
