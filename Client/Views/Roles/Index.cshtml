@@ -1,7 +1,7 @@
-﻿<button class="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#MyPopup">Add  Role</button>
+﻿<button class="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#AddRole">Add  Role</button>
 
-<!-- Modal Popup -->
-<div id="MyPopup" class="modal fade" role="dialog">
+<!-- Modal Popup Insert Data -->
+<div id="AddRole" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,10 +9,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
             <div class="modal-body">
-                <form onsubmit="Insert()" class="needs-validation">
+                <form class="needs-validation" onsubmit="InsertRole()" method="post">
                     <div class="mb-3">
-                        <label for="addRole" class="form-label">Role Name</label>
-                        <input type="text" class="form-control" id="addRole" required>
+                        <label for="roleName" class="form-label">Role Name</label>
+                        <input type="text" class="form-control" id="roleName" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -27,13 +27,40 @@
     </div>
 </div>
 
+<!-- Modal Popup Edit Data -->
+<div id="EditRoleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">University</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" method="post">
+                    <div class="mb-3">
+                        <label for="editRoleName" class="form-label">University Name</label>
+                        <input type="text" class="form-control" id="editRoleName" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="SaveRole">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <table class="table table-striped table-hover">
     <thead class="table-head">
         <tr>
             <th scope="col" class="col-1">No</th>
             <th scope="col" class="col-2">Role</th>
-            @*<th scope="col" class="col-2">Action</th>*@
+            <th scope="col" class="col-2">Action</th>
         </tr>
     </thead>
     <tbody id="tbodyRoles">

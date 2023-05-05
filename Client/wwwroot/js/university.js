@@ -22,8 +22,9 @@
         })
 })()
 
+// Insert new record 
 function InsertUniv() {
-    var obj = new Object(); //sesuaikan sendiri nama objectnya dan beserta isinya
+    var obj = new Object(); 
     obj.name = $("#universityName").val();
     //alert(JSON.stringify(obj));
 
@@ -31,13 +32,32 @@ function InsertUniv() {
         type: "POST",
         url: "https://localhost:7125/api/university",
         data: JSON.stringify(obj),          
-        datatype: "json",
-        contentType: "application/json",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         success: function (result) {
-            alert('Successfully post data: ' + result);
+            console.log('it works');
+            //alert('Successfully post data: ' + result);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Successfully add data',
+                showConfirmButton: false,
+                timer: 1500
+            });
         },
         error: function (er) {
             alert('Failed to post data : ' + er);
+        },
+        complete: function () {
+            //alert("post data is completed");
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Successfully add data',
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     });
 }
@@ -74,6 +94,7 @@ function Insert() {
     })
 }
 
+// Delete record by id
 function Delete(id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -100,7 +121,7 @@ function Delete(id) {
     });
 }
 
-
+// Get all records and display in table
 $.ajax({
         type: "GET",
         url: "https://localhost:7125/api/university",
@@ -113,7 +134,7 @@ $.ajax({
                          <td>${key + 1}</td>      
                          <td>${val.name}</th>
                          <td>
-                            <button class="btn btn-danger" onclick="Delete(${val.id})" data-bs-toggle="modal" data-bs-target="#modalSW">Delete</button>
+                            <button class="btn btn-danger" onclick="Delete(${val.id})" data-bs-toggle="modal">Delete</button>
                             <button class="btn btn-success" onclick="EditData(${val.id})" data-bs-toggle="modal">Edit</button>
                          </td>
                        </tr>`;
@@ -123,11 +144,19 @@ $.ajax({
 });
 
 //Show The Popup Modal For Edit University Record
-
 function EditData(id) {
     $("#EditModal").modal('show');
 
     var url = "https://localhost:7125/api/university/" + id;
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: function (data) {
+            var obj = data;
+            $("#editUniversityName").val(obj.name);
+        }
+    })
 
     $("#SaveUniversity").click(function () {
         var newValue = $("#editUniversityName").val();
@@ -164,40 +193,5 @@ function EditData(id) {
     })
 }
 
-//$("#SaveUniversity").click(function () {
-//    var newValue = $("#universityName").val();
-//    console.log(newValue);
-//    $.ajax({
-//        type: "PUT",
-//        url: url,
-//        data: obj,
-//        datatype: "json",
-//        headers: {
-//            'Content-Type': 'application/json'
-//        },
-//        success: function (result) {
-//            alert("Success edit data!");
-//            $("#EditModal").modal("hide");
-//        }
-//    });
-//})
 
 //https://abctutorial.com/post/76/crud-operations-in-mvc-using-jquery-ajax--data-saveupdate--delete-in-database
-//$("#SaveUniversity").click(function () {
-//    //var data = $("#SubmitForm").serialize();
-//    var newValue = $("#universityName").val();
-
-//    $.ajax({
-//        type: "POST",
-//        url: "https://localhost:7125/api/university",
-//        data: {
-//                name: newValue
-//        },
-//        success: function (result) {
-//            alert("Success edit data!");
-//            $("#EditModal").modal("hide");
-//        }
-//    })
-//})
-
-//<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>

@@ -1,7 +1,7 @@
-﻿<button class="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#MyPopup">Add University</button>
+﻿<button class="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#AddModal">Add University</button>
 
 <!-- Modal Popup -->
-<div id="MyPopup" class="modal fade" role="dialog">
+<div id="AddModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" method="post">
+                <form class="needs-validation" onsubmit="InsertUniv()" method="post">
                     <div class="mb-3">
                         <label for="universityName" class="form-label">University Name</label>
                         <input type="text" class="form-control" id="universityName" required>
@@ -17,7 +17,7 @@
                             Looks good!
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" onclick="Insert()">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
