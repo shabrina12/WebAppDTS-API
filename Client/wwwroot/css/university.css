@@ -1,7 +1,11 @@
 
-/*.export-btn {
+div.dataTables_length {
+    margin-right: 2em;
+}
+
+.dt-button.custom-btn {
     border: none;
     border-radius: 8px;
-    padding: 5px 15px;
+    padding: 8px 25px;
     background: lightblue;
-}*/
+}

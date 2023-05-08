@@ -47,37 +47,38 @@ $(document).ready(function () {
                 }
             },
         ],
-        lengthChange: false,
-        dom: 'Bfrtip',
+        aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+        iDisplayLength: 5,
+        dom: 'lBfrtip',
         buttons: [
             {
-                extend: 'copyHtml5'
+                extend: 'copyHtml5', className: 'custom-btn'
             },
             {
                 extend: 'excelHtml5', 
-                className: "btn-primary",
+                className: 'custom-btn',
                 text: '<i class="fas fa-file-excel"></i>',
                 titleAttr: 'Excel'
             },
             {
                 extend: 'csvHtml5',
+                className: 'custom-btn',
                 text: '<i class="fa-solid fa-file-csv"></i>',
                 titleAttr: 'CSV'
             },
             {
                 extend: 'pdfHtml5',
+                className: 'custom-btn',
                 text: '<i class="fa-solid fa-file-pdf"></i>',
                 titleAttr: 'PDF'
-            },
-            {
-                extend: 'colvis'
             }
+            //{
+            //    extend: 'colvis'
+            //}
         ]
     });
-    table.buttons().container()
-        .appendTo('#example_wrapper .col-md-2:eq(0)');
     //table.buttons().container()
-    //    .insertBefore('#example_filter');
+    //    .appendTo('#example_wrapper .col-md-2:eq(0)');
 
     setInterval(function () {
         table.ajax.reload();

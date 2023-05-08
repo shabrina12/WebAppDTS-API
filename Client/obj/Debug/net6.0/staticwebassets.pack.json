@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\js\\employees.js"
     },
     {
+      "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
       "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\js\\roles.js",
       "PackagePath": "staticwebassets\\js\\roles.js"
     },
