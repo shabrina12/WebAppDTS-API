@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\css\\university.css",
+      "PackagePath": "staticwebassets\\css\\university.css"
+    },
+    {
       "Id": "C:\\Users\\shabb\\source\\repos\\WebAppDTS-API\\Client\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

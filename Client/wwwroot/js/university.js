@@ -1,5 +1,6 @@
 ﻿//https://medium.com/c-sharp-progarmming/how-to-post-data-to-the-controller-using-ajax-with-validations-in-asp-net-core-a63af60867e9
 //https://www.tutorialsteacher.com/webapi/consume-web-api-post-method-in-aspnet-mvc
+//https://stackoverflow.com/questions/10422244/why-does-jquery-ajax-callback-function-not-work
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
@@ -22,11 +23,93 @@
         })
 })()
 
+// Get all records and display in table
+$(document).ready(function () {
+    let table = new $('#tableUniv').DataTable({
+        ajax: {
+            url: "https://localhost:7125/api/university",
+            dataType: "json",
+            dataSrc: ""
+        },
+        columns: [
+            {
+                data: "",
+                render: (data, type, row, meta) => {
+                    return meta.row + 1;
+                }
+            },
+            { data: "name" },
+            {
+                data: "",
+                render: (data, type, row) => {
+                    return `<button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>
+                    <button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>`
+                }
+            },
+        ],
+        lengthChange: false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'copyHtml5'
+            },
+            {
+                extend: 'excelHtml5', 
+                className: "btn-primary",
+                text: '<i class="fas fa-file-excel"></i>',
+                titleAttr: 'Excel'
+            },
+            {
+                extend: 'csvHtml5',
+                text: '<i class="fa-solid fa-file-csv"></i>',
+                titleAttr: 'CSV'
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fa-solid fa-file-pdf"></i>',
+                titleAttr: 'PDF'
+            },
+            {
+                extend: 'colvis'
+            }
+        ]
+    });
+    table.buttons().container()
+        .appendTo('#example_wrapper .col-md-2:eq(0)');
+    //table.buttons().container()
+    //    .insertBefore('#example_filter');
+
+    setInterval(function () {
+        table.ajax.reload();
+    }, 30000);
+});
+
+// Get all records and display in table
+//$.ajax({
+//    type: "GET",
+//    url: "https://localhost:7125/api/university",
+//    datatype: "json",
+//    success: function (data) {
+//        console.log(data);
+//        let temp = "";
+//        $.each(data, (key, val) => {
+//            temp += `<tr>
+//                         <td>${key + 1}</td>      
+//                         <td>${val.name}</th>
+//                         <td>
+//                            <button class="btn btn-danger" onclick="Delete(${val.id})" data-bs-toggle="modal">Delete</button>
+//                            <button class="btn btn-success" onclick="EditData(${val.id})" data-bs-toggle="modal">Edit</button>
+//                         </td>
+//                       </tr>`;
+//        });
+//        $("#tbodyUniv").html(temp);
+//    }
+//});
+
 // Insert new record 
 function InsertUniv() {
     var obj = new Object(); 
     obj.name = $("#universityName").val();
-    //alert(JSON.stringify(obj));
 
     $.ajax({
         type: "POST",
@@ -36,7 +119,7 @@ function InsertUniv() {
             'Content-Type': 'application/json'
         },
         success: function (result) {
-            console.log('it works');
+            //console.log('it works');
             //alert('Successfully post data: ' + result);
             Swal.fire({
                 position: 'center',
@@ -61,6 +144,7 @@ function InsertUniv() {
         }
     });
 }
+
 
 function Insert() {
     var obj = new Object();
@@ -91,8 +175,47 @@ function Insert() {
         //    title: 'Oops...',
         //    text: 'Failed to add data!'
         //});
-    })
+    }).always( function() {
+        //alert("complete");
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Successfully add data',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
 }
+
+
+//function InsertUniv() {
+//    $("#SaveNewUniversity").click(function () {
+//        var obj = new Object();
+//        obj.name = $("#universityName").val();
+
+//        Swal.fire({
+//            title: 'Do you want to save the changes?',
+//            showDenyButton: true,
+//            showCancelButton: true,
+//            confirmButtonText: 'Save',
+//            denyButtonText: `Don't save`,
+//        }).then((result) => {
+//            if (result.isConfirmed) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: "https://localhost:7125/api/university",
+//                    data: JSON.stringify(obj),
+//                    headers: {
+//                        'Content-Type': 'application/json'
+//                    },
+//                });
+//                Swal.fire('Saved!', '', 'success')
+//            } else if (result.isDenied) {
+//                Swal.fire('Changes are not saved', '', 'info')
+//            }
+//        })
+//    })  
+//}
 
 // Delete record by id
 function Delete(id) {
@@ -110,7 +233,7 @@ function Delete(id) {
                 type: "DELETE",
                 url: "https://localhost:7125/api/university/" + id,
             }).done((result) => {
-
+                setInterval('location.reload()', 1500);    
             });
             Swal.fire(
                 'Deleted!',
@@ -120,28 +243,6 @@ function Delete(id) {
         }
     });
 }
-
-// Get all records and display in table
-$.ajax({
-        type: "GET",
-        url: "https://localhost:7125/api/university",
-        datatype: "json",
-        success: function (data) {
-            //console.log(data);
-            let temp = "";
-            $.each(data, (key, val) => {
-                temp += `<tr>
-                         <td>${key + 1}</td>      
-                         <td>${val.name}</th>
-                         <td>
-                            <button class="btn btn-danger" onclick="Delete(${val.id})" data-bs-toggle="modal">Delete</button>
-                            <button class="btn btn-success" onclick="EditData(${val.id})" data-bs-toggle="modal">Edit</button>
-                         </td>
-                       </tr>`;
-            });
-            $("#tbodyUniv").html(temp);
-        }
-});
 
 //Show The Popup Modal For Edit University Record
 function EditData(id) {
@@ -181,12 +282,13 @@ function EditData(id) {
                     timer: 1500
                 });
                 $("#EditModal").modal("hide");
+                setInterval('location.reload()', 1500);    
             },
             error: function (er) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Failed to add data!'
+                    text: 'Failed to update data!'
                 });
             }
         });
