@@ -2,30 +2,42 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.Options;
+using Client.Repository.Interface;
+using Client.Repository;
+using System.Net;
+using System.Drawing.Printing;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+builder.Services.AddScoped(typeof(IGeneralRepository<,>), typeof(GeneralRepository<,>));
+builder.Services.AddScoped<IUniversityRepository, UniversityRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 //JWT Authentication
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//        .AddJwtBearer(options =>
-//        {
-//            options.RequireHttpsMetadata = false;
-//            options.SaveToken = true;
-//            options.TokenValidationParameters = new TokenValidationParameters
-//            {
-//                ValidateIssuer = true,
-//                ValidateAudience = true,
-//                ValidateLifetime = true,
-//                ValidateIssuerSigningKey = true,
-//                ValidIssuer = builder.Configuration["Jwt:Issuer"],
-//                ValidAudience = builder.Configuration["Jwt:Audience"],
-//                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-//                ClockSkew = TimeSpan.Zero
-//            };
-//        });
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                ClockSkew = TimeSpan.Zero
+            };
+        });
+
+//https://stackoverflow.com/questions/31886779/asp-net-mvc-6-aspnet-session-errors-unable-to-resolve-service-for-type
 
 var app = builder.Build();
 
@@ -42,30 +54,47 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseSession();
-////Add JWToken to all incoming HTTP Request Header
-//app.Use(async (context, next) =>
-//{
-//    var JWToken = context.Session.GetString("JWToken");
+// Custome Error page
+app.UseStatusCodePages(async context => {
+    var response = context.HttpContext.Response;
 
-//    if (!string.IsNullOrEmpty(JWToken))
-//    {
-//        context.Request.Headers.Add("Authorization", "Bearer " + JWToken);
-//    }
+    if (response.StatusCode.Equals((int)HttpStatusCode.Unauthorized))
+    {
+        response.Redirect("/unauthorized");
+    }
+    else if (response.StatusCode.Equals((int)HttpStatusCode.NotFound))
+    {
+        response.Redirect("/notfound");
+    }
+    else if (response.StatusCode.Equals((int)HttpStatusCode.Forbidden))
+    {
+        response.Redirect("/forbidden");
+    }
+});
 
-//    await next();
-//});
+app.UseSession();
+//Add JWToken to all incoming HTTP Request Header
+app.Use(async (context, next) =>
+{
+    var JWToken = context.Session.GetString("JWToken");
+
+    if (!string.IsNullOrEmpty(JWToken))
+    {
+        context.Request.Headers.Add("Authorization", "Bearer " + JWToken);
+    }
+    await next();
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
 // default page ketika project start yaitu page login
 //app.MapControllerRoute(
 //    name: "default",
-//    pattern: "{controller=Login}/{action=Index}/{id?}");
+//    pattern: "{controller=Account}/{action=Login}/{id?}");
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

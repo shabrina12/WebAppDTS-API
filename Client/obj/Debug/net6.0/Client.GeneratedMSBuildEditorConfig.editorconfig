@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\shabb\source\repos\WebAppDTS-API\Client
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Books/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -26,6 +34,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Employees/Master.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXE1hc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Home/401.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVw0MDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Home/403.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVw0MDMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Home/404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVw0MDQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/shabb/source/repos/WebAppDTS-API/Client/Views/Home/Index.cshtml]

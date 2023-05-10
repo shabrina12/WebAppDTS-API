@@ -14,7 +14,7 @@ namespace WebAppDTS_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AccountController : BaseController<IAccountRepository, Account, string>
     {
         private readonly IAccountRepository _repository;
@@ -63,7 +63,7 @@ namespace WebAppDTS_API.Controllers
             }
         }
 
-        [HttpPost("Auth")]
+        [HttpPost("Login")]
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginVM loginVM)
         {
