@@ -2,7 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Client",
-    "\\Client\\Controllers",
+    "\\Client\\Repository",
     "\\Client\\wwwroot",
     "\\Client\\wwwroot\\js",
     "\\WebAppDTS-API",
@@ -12,6 +12,6 @@
     "\\WebAppDTS-API\\Repository",
     "\\WebAppDTS-API\\Repository\\Contracts"
   ],
-  "SelectedNode": "\\Client\\Controllers\\AccountController.cs",
+  "SelectedNode": "\\Client\\Repository\\AccountRepository.cs",
   "PreviewInSolutionExplorer": false
 }

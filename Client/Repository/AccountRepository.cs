@@ -4,7 +4,6 @@ using Client.ViewModels;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Unicode;
-//using System.Text.Json;
 
 namespace Client.Repository
 {
@@ -24,12 +23,9 @@ namespace Client.Repository
         public async Task<ResponseViewModel<string>> Login(LoginVM entity)
         {
             ResponseViewModel<string> entityVM = null;
-            var tes = JsonConvert.SerializeObject(entity);
-            //var jsonString = System.Text.Json.JsonSerializer.Serialize(entity);
-            StringContent content = new StringContent(tes, Encoding.UTF8, "application/json");
-            //StringContent jsonContent = new(System.Text.Json.JsonSerializer.Serialize(entity), Encoding.UTF8, "application/json");
+            var jsonString = JsonConvert.SerializeObject(entity);
+            StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-            //var resp = httpClient.PostAsync(request + "Login", content).Result;
             using (var response = httpClient.PostAsync(request + "Login", content).Result)
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();

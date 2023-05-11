@@ -4,98 +4,99 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>Register</h1>
+@section Stylesheets {
+	<link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+}
 
-<h4>RegisterVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NIK" class="control-label"></label>
-                <input asp-for="NIK" class="form-control" />
-                <span asp-validation-for="NIK" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>*@
-                <select class="form-select" aria-label="Gender" id="Gender">
-                    <option hidden>Gender</option>
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="HiringDate" class="control-label"></label>
-                <input asp-for="HiringDate" class="form-control" />
-                <span asp-validation-for="HiringDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Major" class="control-label"></label>
-                <input asp-for="Major" class="form-control" />
-                <span asp-validation-for="Major" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Degree" class="control-label"></label>
-                <input asp-for="Degree" class="form-control" />
-                <span asp-validation-for="Degree" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GPA" class="control-label"></label>
-                <input asp-for="GPA" class="form-control" />
-                <span asp-validation-for="GPA" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UniversityName" class="control-label"></label>
-                <input asp-for="UniversityName" class="form-control" />
-                <span asp-validation-for="UniversityName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">Register Form</h2>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="page-content justify-content-center">
+		<div class="form-v10-content">
+			<form class="form-detail" asp-action="Register" method="post">
+				<div class="form-left">
+					<h2>General Infomation</h2>
+					<div class="form-row">
+						<input asp-for="NIK" class="form-control" placeholder="NIK" />
+						<span asp-validation-for="NIK" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input asp-for="FirstName" class="form-control" placeholder="First Name" />
+							<span asp-validation-for="FirstName" class="text-danger"></span>
+						</div>
+						<div class="form-row form-row-2">
+							<input asp-for="LastName" class="form-control" placeholder="Last Name" />
+							<span asp-validation-for="LastName" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="form-row">
+                        <input asp-for="BirthDate" class="form-control" type="text" onfocus="(this.type='date')" placeholder="Birth Date" />
+						<span asp-validation-for="BirthDate" class="text-danger"></span>
+					</div>
+					<div class="form-row">
+						<select class="form-select" aria-label="Gender" id="Gender">
+							<option hidden>Gender</option>
+							<option value="0">Male</option>
+							<option value="1">Female</option>
+						</select>
+					</div>
+                    <div class="form-row">
+                        <input asp-for="Major" class="form-control" placeholder="Major" />
+                        <span asp-validation-for="Major" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <input asp-for="Degree" class="form-control" placeholder="Degree" />
+                        <span asp-validation-for="Degree" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <input asp-for="GPA" class="form-control" placeholder="GPA" />
+                        <span asp-validation-for="GPA" class="text-danger"></span>
+                    </div>                                   
+				</div>
+				<div class="form-right">
+					<h2>Contact Details</h2>
+                    <div class="form-row">
+                        <input asp-for="UniversityName" class="form-control" placeholder="University Name" />
+                        <span asp-validation-for="UniversityName" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+					<div class="form-row">
+						<input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+						<span asp-validation-for="PhoneNumber" class="text-danger"></span>						
+					</div>
+                    <div class="form-row">
+                        <input asp-for="HiringDate" class="form-control" type="text" onfocus="(this.type='date')" placeholder="Hiring Date" />
+                        <span asp-validation-for="HiringDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <input asp-for="Password" class="form-control" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+					<div class="form-checkbox">
+						<label class="container"><p>I do accept the <a href="#" class="text">Terms and Conditions</a> of your site.</p>
+						  	<input type="checkbox" name="checkbox">
+						  	<span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="form-row-last">
+						<button type="submit" class="register" value="Register">Sign Up</button>
+						@*<input type="submit" name="register" class="register" value="Register">*@
+					</div>
+				</div>
+			</form>
+		</div>
+    <a asp-action="Login" asp-controller="Account">Back to Login</a>
 </div>
 
 @section Scripts {

@@ -1,11 +1,4 @@
-﻿@model Client.ViewModels.LoginVM
-
-@{
-    ViewData["Title"] = "Login";
-}
-
-<h1>Login</h1>
-
+﻿@*
 @if (TempData["Success"] != null)
 {
     <div class="toast align-items-center text-white bg-success top-0 end-0 border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -17,33 +10,71 @@
         </div>
     </div>
 }
+*@
 
-<hr />
+@model Client.ViewModels.LoginVM
 
-<h4>LoginVM</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
-                <a class="btn btn-secondary" asp-action="Register">Register</a>
-            </div>
-        </form>
-    </div>
-</div>
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Stylesheets {
+	<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+}
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login Form</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+							<div class="text w-100">
+								<h2>Welcome to login</h2>
+								<p>Don't have an account?</p>
+								<a class="btn btn-white btn-outline-white" asp-action="Register">Sign Up</a>
+							</div>
+						</div>
+						<div class="login-wrap p-4 p-lg-5">
+							<div class="d-flex">
+								<div class="w-100">
+									<h3 class="mb-4">Sign In</h3>
+								</div>
+								<div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+									</p>
+								</div>
+							</div>
+							<form class="signin-form" asp-action="Login">
+								<div class="form-group mb-3">
+									<label asp-for="Email" class="control-label"></label>
+									<input asp-for="Email" class="form-control" />
+									<span asp-validation-for="Email" class="text-danger"></span>
+								</div>
+								<div class="form-group mb-3">
+									<label asp-for="Password" class="control-label"></label>
+									<input asp-for="Password" class="form-control" />
+									<span asp-validation-for="Password" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-login" value="Login">Sign In</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }

@@ -40,8 +40,7 @@
                     @*<li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>*@
                     <li><a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Books</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -53,7 +52,7 @@
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
                         @*<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">*@
-                        <a class="nav-link">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>

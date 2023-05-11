@@ -44,6 +44,12 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("JWToken");
+            return RedirectToAction("Login", "Account");
+        }
+
         [HttpGet]
         public IActionResult Register()
         {
